@@ -2,6 +2,7 @@ package com.siddharth.audiobook
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.siddharth.audiobook.databinding.ItemBinding
@@ -22,7 +23,14 @@ class listadapter : RecyclerView.Adapter<AudioViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: AudioViewHolder, position: Int) {
-        holder.binding.songname.text = results[position].trackName
+        holder.binding.root.setOnClickListener {
+            holder.binding.expanded.isVisible = !holder.binding.expanded.isVisible
+        }
+        if (results[position].trackName.isNullOrEmpty()){
+            holder.binding.songname.text = "NA/Missing"
+        } else {
+            holder.binding.songname.text = results[position].trackName
+        }
         Glide.with(holder.binding.root).load(results[position].artworkUrl60).into(holder.binding.songimage)
         holder.binding.desc.text = results[position].description
         holder.binding.artistname.text = results[position].artistName

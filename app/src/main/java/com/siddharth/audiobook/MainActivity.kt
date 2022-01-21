@@ -11,6 +11,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
+    lateinit var data : List<Results>
     override fun onCreate(savedInstanceState: Bundle?) {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -18,11 +19,14 @@ class MainActivity : AppCompatActivity() {
         val lsadapter = listadapter()
         binding.recycle.adapter = lsadapter
         GlobalScope.launch {
-            val data = apiService.getdata().results
+            data = apiService.getdata().results
             withContext(Dispatchers.Main){
                 lsadapter.submitList(data)
-                data.shuffled()
             }
         }
+        binding.shuffle.setOnClickListener {
+            lsadapter.submitList(data.shuffled())
+        }
+
     }
 }

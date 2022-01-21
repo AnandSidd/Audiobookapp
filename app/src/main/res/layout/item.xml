@@ -20,6 +20,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"
+            android:textColor="@android:color/holo_blue_dark"
             android:text="Artistname" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -27,6 +29,7 @@
         android:id="@+id/expanded"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/initial">
@@ -43,6 +46,7 @@
             android:id="@+id/songname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="this is song"
             app:layout_constraintStart_toEndOf="@+id/songimage"
             app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +54,8 @@
         <TextView
             android:id="@+id/desc"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
             android:text="thisd is description"
             app:layout_constraintStart_toEndOf="@id/songimage"
             app:layout_constraintTop_toBottomOf="@+id/songname" />
