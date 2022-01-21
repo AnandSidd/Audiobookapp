@@ -9,9 +9,10 @@ import com.siddharth.audiobook.databinding.ItemBinding
 
 class listadapter : RecyclerView.Adapter<AudioViewHolder>() {
 
-    private var results = emptyList<Results>()
+    private var results = emptyList<Pair<String, List<Results>>>()
+    private var artists = emptyList<artist>()
 
-    fun submitList(todoList: List<Results>) {
+    fun submitList(todoList: List<Pair<String, List<Results>>>) {
         results = todoList
         notifyDataSetChanged()
     }
@@ -24,16 +25,14 @@ class listadapter : RecyclerView.Adapter<AudioViewHolder>() {
 
     override fun onBindViewHolder(holder: AudioViewHolder, position: Int) {
         holder.binding.root.setOnClickListener {
-            holder.binding.expanded.isVisible = !holder.binding.expanded.isVisible
+            holder.binding.artistrecyclerview.isVisible = !holder.binding.artistrecyclerview.isVisible
         }
-        if (results[position].trackName.isNullOrEmpty()){
-            holder.binding.songname.text = "NA/Missing"
-        } else {
-            holder.binding.songname.text = results[position].trackName
-        }
-        Glide.with(holder.binding.root).load(results[position].artworkUrl60).into(holder.binding.songimage)
-        holder.binding.desc.text = results[position].description
-        holder.binding.artistname.text = results[position].artistName
+        holder.binding.artistname.text = results[position].first
+        val artistAdapter = ArtistAdapter()
+        holder.binding.artistrecyclerview.adapter = artistAdapter
+
+        artistAdapter.submitList(results[position].second)
+
 
     }
 

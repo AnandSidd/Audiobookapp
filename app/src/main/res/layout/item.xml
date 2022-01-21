@@ -25,39 +25,13 @@
             android:text="Artistname" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/expanded"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/artistrecyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/initial">
+        app:layout_constraintTop_toBottomOf="@id/initial"></androidx.recyclerview.widget.RecyclerView>
 
-        <ImageView
-            android:id="@+id/songimage"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/songname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="this is song"
-            app:layout_constraintStart_toEndOf="@+id/songimage"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/desc"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginStart="8dp"
-            android:text="thisd is description"
-            app:layout_constraintStart_toEndOf="@id/songimage"
-            app:layout_constraintTop_toBottomOf="@+id/songname" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
