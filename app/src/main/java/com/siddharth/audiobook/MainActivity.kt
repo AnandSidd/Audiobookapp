@@ -3,6 +3,7 @@ package com.siddharth.audiobook
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.view.isVisible
 import com.siddharth.audiobook.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -28,7 +29,9 @@ class MainActivity : AppCompatActivity() {
                 it.artistName
             }.toList()
             withContext(Dispatchers.Main){
+                binding.progressBar.isVisible = false
                 lsadapter.submitList(artgrp)
+
             }
         }
 
